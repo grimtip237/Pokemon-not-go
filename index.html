@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pokemon</title>
+    <style type="text/css">
+        .item {
+            width: 150px;
+            height: 150px;
+            background-size:100%;
+            background-repeat: no-repeat;
+            margin-top: 20px;
+            margin-left: 20px;
+            background: green;
+            background-size:  100% 100%;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            height: 200px;
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 200px;
+            opacity: 0;
+        }
+        .border {
+            border: 5px solid green;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>У тебя есть 4 секунд и тебе надо найти всех покемонов. Всё просто</h1>
+       <button class="btn" style="height: 50px; width: 100px; position: absolute; left: 200px; top: 200px;"> Начать</button>
+    <div class="row">
+    </div>
+    <script type="text/javascript">
+    //див-родитель
+    let btn = document.querySelector(".btn");
+    let row = document.querySelector(".row");
+
+    //хранение картинок
+    let images = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
+
+    let randomizer = function(arg) {
+        let random = Math.random() * arg;
+        let round = Math.round(random) ;
+        return round
+    }
+
+    let score = 0
+    let check = 0
+
+    let utilizator = function(arg) {
+        document.querySelectorAll(arg)[0].style.opacity="0;"
+        document.querySelectorAll(arg)[1].style.opacity="0;"
+    }
+
+    for(let i=0; i<12; i=i+1) {
+
+        let num = randomizer(images.length-1);
+
+        let box = document.createElement("div");
+        row.appendChild(box);
+        box.classList.add("item");
+        box.name = images[num]
+        box.style.backgroundImage = "url(" + images[num] + ")";
+        images.splice(num,1)
+
+        btn.onclick = function() {
+            row.style.opacity = "1";
+            btn.style.display = "none";
+            let over = function() {
+                row.style.opacity = "0"
+            }
+            setInterval(over,4000);
+
+            if(score==6) {
+                alert("Ты победил")
+            }
+        }
+
+        box.onclick = function() {
+
+            
+
+            if(box.name == "1.png") {
+                box.classList.add("border");
+                box.classList.add('pokemon1');
+                check = check + 1;
+                console.log(check)
+                    if(check==2){
+                    document.querySelectorAll(".pokemon1")[0].style.opacity="0"
+                    document.querySelectorAll(".pokemon1")[1].style.opacity="0"
+                    check=0;
+                    score = score + 1
+                    console.log(score)
+                }
+            }
+
+            if(box.name == "2.png") {
+                box.classList.add("border");
+                box.classList.add('pokemon2');
+                check = check + 1;
+                console.log(check)
+                    if(check==2){
+                    document.querySelectorAll(".pokemon2")[0].style.opacity="0"
+                    document.querySelectorAll(".pokemon2")[1].style.opacity="0"
+                    check=0;
+                    score = score + 1
+                    console.log(score)
+                }
+            }
+
+            if(box.name == "3.png") {
+                box.classList.add("border");
+                box.classList.add('pokemon3');
+                check = check + 1;
+                console.log(check)
+                    if(check==2){
+                    document.querySelectorAll(".pokemon3")[0].style.opacity="0"
+                    document.querySelectorAll(".pokemon3")[1].style.opacity="0"
+                    check=0;
+                    score = score + 1
+                    console.log(score)
+                }
+            }
+
+            if(box.name == "4.png") {
+                box.classList.add("border");
+                box.classList.add('pokemon4');
+                check = check + 1;
+                console.log(check)
+                    if(check==2){
+                    document.querySelectorAll(".pokemon4")[0].style.opacity="0"
+                    document.querySelectorAll(".pokemon4")[1].style.opacity="0"
+                    check=0;
+                    score = score + 1
+                    console.log(score)
+                }
+            }
+
+            if(box.name == "5.png") {
+                box.classList.add("border");
+                box.classList.add('pokemon5');
+                check = check + 1;
+                console.log(check)
+                    if(check==2){
+                    document.querySelectorAll(".pokemon5")[0].style.opacity="0"
+                    document.querySelectorAll(".pokemon5")[1].style.opacity="0"
+                    check=0;
+                    score = score + 1
+                    console.log(score)
+                }
+            }
+
+            if(box.name == "6.png") {
+                box.classList.add("border");
+                box.classList.add('pokemon6');
+                check = check + 1;
+                console.log(check)
+                    if(check==2){
+                    document.querySelectorAll(".pokemon6")[0].style.opacity="0"
+                    document.querySelectorAll(".pokemon6")[1].style.opacity="0"
+                    check=0;
+                    score = score + 1
+                    console.log(score)
+                }
+            }
+        }
+    }
+
+
+
+    </script>
+</body>
+</html>
